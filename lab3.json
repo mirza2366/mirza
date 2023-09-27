@@ -1,0 +1,31 @@
+{
+    "$schema":"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion":"1.0.0.1",
+    "parameters": {
+        "storagename":{
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 20
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2023-01-01",
+            "name": "[parameters('storagename')]",
+            "location": "[parameters('location')]"
+            "sku": {"name": "Standard_LRS" },
+            "kind": "StorageV2",
+            "tags": {
+    "DEPT": "IT",
+    "SEC": "IAAS"
+    
+            }
+            
+    }
+    ]
+    }
